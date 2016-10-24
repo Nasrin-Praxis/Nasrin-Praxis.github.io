@@ -108,6 +108,6 @@
       {% if external == "//" or external == "ht" %}<script src='{{ script }}'></script>
       {% else %}{% js 'apps/{{ script }}' %}{% endif %}
     {% endfor %}
-    {% include system/analytics %}
+    {% widget {{site.analytics.provider}} params=site.analytics %}
   </body>
 </html>
