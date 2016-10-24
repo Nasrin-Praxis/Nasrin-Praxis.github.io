@@ -1,0 +1,116 @@
+---
+layout: template
+title: Anfahrt
+---
+<style>
+img.adp-marker {
+  margin: 5px;
+}
+.adp > div > .adp-placemark {
+  margin-top: 0;
+}
+#geolocate {
+  padding-top: 15px;
+}
+#map {
+  min-height: 200px;
+  margin: 0 -15px 15px;
+}
+@media(min-width:768px) {
+  #directions {
+    position: absolute;
+    overflow: auto;
+    top: 75px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    padding-right: 5px;
+  }
+}
+</style>
+<div class="container-fluid fh-sm">
+  <h1 class="sr-only">Anfahrt</h1>
+  <div class="row fh">
+    <div class="col-lg-8 col-lg-push-4 col-sm-7 col-sm-push-5 fh">
+      <div id="map" class="fh"></div>
+    </div>
+    <div class="col-lg-4 col-lg-pull-8 col-sm-5 col-sm-pull-7 fh rel">
+      <form id="geolocate">
+        <!--div class="form-group">
+          <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default active">
+              <input type="radio" name="transport" id="driving" autocomplete="off" value="DRIVING" checked>
+              <i class="mapico mapico-driving fa-2x"></i>
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" name="transport" id="transit" autocomplete="off" value="TRANSIT">
+              <i class="mapico mapico-transit fa-2x"></i>
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" name="transport" id="walking" autocomplete="off" value="WALKING">
+              <i class="mapico mapico-walking fa-2x"></i>
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" name="transport" id="bicycle" autocomplete="off" value="BICYCLE">
+              <i class="mapico mapico-bicycle fa-2x"></i>
+            </label>
+          </div>
+        </div-->
+        <label class="sr-only" for="adresse">Startadresse</label>
+        <div class="input-group input-group-lg">
+          <input type="text" id="adresse" class="form-control" placeholder="Startadresse" size="50" autocomplete="on" required>
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Los</button>
+          </span>
+        </div>
+      </form>
+      <div id="directions"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('adresse').value = decodeURIComponent(window.location.hash.substring(1).replace(/\+/g, "%20"));
+document.getElementById('adresse').value = decodeURIComponent(window.location.hash.substring(1).replace(/\+/g, "%20"));
+function initMap() {
+  var input = document.getElementById('adresse');
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  var directionsService = new google.maps.DirectionsService;
+  var map = new google.maps.Map(document.getElementById('map'));
+  var autocomplete = new google.maps.places.Autocomplete(input,{types: ['geocode']});
+  var onChangeHandler = function(e) {
+    if(e) e.preventDefault();
+    window.location.hash = encodeURIComponent(input.value).replace(/%20/g, "+");
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  };
+  autocomplete.addListener('place_changed', onChangeHandler);
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('directions'));
+
+  //input.addEventListener('change', onChangeHandler);
+  document.getElementById('geolocate').addEventListener('submit', onChangeHandler);
+
+  if(input.value) onChangeHandler();
+}
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  directionsService.route({
+    origin: document.getElementById('adresse').value,
+    destination: "Alsterchaussee 3, 20149 Hamburg",
+    travelMode: 'DRIVING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      document.getElementById('directions').innerHTML = '';
+      directionsDisplay.setDirections(response);
+    } else {
+      var err;
+      if(status == 'NOT_FOUND') {
+        err = 'Die Adresse wurde leider nicht gefunden, bitte probieren Sie es erneut.';
+      } else {
+        err = status;
+      }
+      document.getElementById('directions').innerHTML = '<div class="alert alert-danger">' + err + '</div>';
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA803TAzZWMpes5AjakSDPRA_6pSEcxEMA&amp;libraries=places&amp;region=de&amp;callback=initMap" async="" defer=""></script>

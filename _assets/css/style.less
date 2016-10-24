@@ -1,0 +1,38 @@
+html, body, .fh {
+  height: 100%;
+}
+body {
+	padding: 51px 0 0;
+}
+.rel {
+  position: relative;
+}
+.container-sm {
+    max-width: 849px + @grid-gutter-width;
+}
+@media (min-width: @screen-sm) {
+    .fh-sm {
+    	height: 100%;
+    }
+}
+@media (min-width: 992px) {
+    body {
+    	padding-top: 71px;
+    }
+}
+
+h1, .h1, .page-header {
+    margin-top: 0;
+}
+
+footer {
+	.bg-darker;
+	border-top: 1px solid @gray-darker;
+	background: @gray-darker;
+}
+footer a {
+	color: #ddd;
+}
+footer a:hover {
+	color:@brand-primary;
+}

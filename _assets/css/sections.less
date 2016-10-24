@@ -1,0 +1,45 @@
+.section-header {
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
+
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  .separator {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+.section-md {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .separator {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+.section-sm {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .separator {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+// remove bottom margin for last element
+.section,
+.section-md,
+.section-sm {
+  &, & > div {
+    > div,
+    > ul,
+    > ul > li,
+    > p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

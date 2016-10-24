@@ -1,0 +1,78 @@
+---
+layout: template
+banner: true
+---
+<div class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-push-7 col-sm-5 banner-text rel section">
+        <div class="h1">{{ page.banner_title }}</div>
+        <p class="lead">{{ page.banner_text | newline_to_br }}</p>
+        <a class="btn btn-primary btn-lg" href="{{ page.banner_link }}">Mehr erfahren</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center section container">
+  <h1 class="section-header">{{ page.title }}</h1>
+  {% include content.html %}
+</div>
+
+<div class="text-center section bg-gray">
+  <div class="container">
+    <h2 class="h1 section-header">Therapie Leistungen</h2>
+    <div class="row">
+      {% assign items = site.therapies | sort: 'order' %}
+      {% for item in items %}
+      {% assign img = item.image | remove_first: '_media/' %}
+      {% if assets[img] %}
+      {% capture img_path %}{% img_path '{{ img }}' magick:resize:400^x300 magick:gravity:center magick:crop:400x300+0+0 image_optim:optimize:1 %}{% endcapture %}
+      {% else %}
+      {% assign img_path = '' %}
+      {% endif %}
+      <div class="col-sm-4 col-md-3">
+        <div class="panel panel-default">
+          {% if assets[img] %}
+          <a href="{{ item.url }}"><img alt="{{ item.item }}" class="img-responsive" src="{{ img_path }}"></a>
+          {% endif %}
+          <div class="panel-body">
+            <h3 class="h4">{{ item.title }}</h3>
+            <a class="btn btn-default" href="{{ item.url }}">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="bg-primary bg-fade section">
+  <div class="container">
+    <h2 class="h1 section-header text-center">Was Patienten sagen</h2>
+    <div class="section-content owl-carousel owl-theme" data-autoplay="true" data-items="3" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3}}' data-margin="30" data-loop="true" data-pause="false">
+      {% assign items = site.testimonials | sort: 'order' %}
+      {% for item in items %}
+      {% assign txt = item.quote | default: item.content | strip_html | strip %}
+      {% if txt != '' %}
+      <div>
+        <div class="bubble bubble-top lead">{{ txt }}</div>
+        {% assign img = item.image | remove_first: '_media/' %}
+        <div class="media">
+          {% if assets[img] %}
+          <div class="pull-left">{% img '{{ img }}' magick:resize:64^x64 magick:gravity:center magick:crop:64x64+0+0 image_optim:optimize:1 class:"img-circle img-thumbnail" alt:"{{ item.item }}" %}</div>
+          {% endif %}
+          <div class="media-body">
+            <strong class="h4">{{ item.title }}</strong> {% if item.birthday %} - {{ item.birthday | years }}J{% endif %}<br>
+            {% if item.position %}{{ item.position }}<br>{% endif %}
+            {% if item.location %}<i class="fa fa-map-marker"></i> {{ item.location }}{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% include modules/anfahrt.html %}

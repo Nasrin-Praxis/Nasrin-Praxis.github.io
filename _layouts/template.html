@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>{% include header.html %}</head>
+  <body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+    <header class="navbar navbar-default navbar-fixed-top" id="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ site.baseurl }}">
+            <img src="{% img_path logo.png magick:resize:x50 image_optim:optimize:1 %}" srcset="{% img_path logo.png magick:resize:x50 image_optim:optimize:1 %} 1x, {% img_path logo.png magick:resize:x100 image_optim:optimize:1 %} 2x" alt="{{ site.title }}" />
+          </a>
+        </div>
+        <nav class="navbar-collapse collapse" role="navigation">
+          <ul class="nav navbar-nav navbar-right">
+          {% assign pages = site.pages | where: 'published', 1 | where: 'menu', 'main' | sort: 'order' %}
+          {% for item in pages %}
+            {% unless item.parent %}
+            <li {% if item.slug == page.slug or page.collection == item.slug or page.app == item.slug or page.parent == item.slug %}class="active"{% endif %}>
+              <a href="{{ item.url | remove: 'index.html' }}">
+                {% if item.slug == 'index' %}Home{% else %}{{ item.title }}{% endif %}
+              </a>
+            </li>
+          {% endunless %}
+          {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {% if layout.top %}{% include modules.html module=layout.top %}{% endif %}
+    {% if page.top %}{% include modules.html module=page.top %}{% endif %}
+    {{ content }}
+    {% if page.bottom %}{% include modules.html module=page.bottom %}{% endif %}
+    {% if layout.bottom %}{% include modules.html module=layout.bottom %}{% endif %}
+    <footer id="footer">
+      <aside class="bg-dark section-sm">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <h4>Kontakt</h4>
+              <address>
+                <strong>{{ site.contact.location }}</strong><br>
+                {{ site.contact.address | newline_to_br }}<br><br>
+                <i class="fa fa-fw fa-phone"></i> {{ site.contact.telephone }}<br>
+                <i class="fa fa-fw fa-envelope"></i> {{ site.contact.email }}
+              </address>
+            </div>
+            <div class="col-sm-4">
+              <h4>Therapie Leistungen</h4>
+              <ul class="list-unstyled">
+                {% assign items = (site.therapies | where: 'published', 1 | sort: 'order') %}
+                {% for item in items %}
+                <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="col-sm-4">
+              <h4>Newsletter</h4>
+              <p>Tips rund ums Thema schmerzfrei leben.</p>
+              <form action="//faszien-hamburg.us14.list-manage1.com/subscribe/post?u=21afbad37d208bc2deb2cd8a0&amp;id=8042822120" method="post" id="mailchimp_form" target="_blank">
+                <label class="sr-only" for="email">Email Address</label>
+                <div class="input-group">
+                  <input type="email" id="email" name="EMAIL" class="form-control" placeholder="Geben Sie Ihre E-Mail Adresse ein" size="50" required>
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Los</button>
+                  </span>
+                </div>
+              </form>
+              <br>
+              <h4>Folge Uns</h4>
+              <ul class="list-inline">
+              {% for provider in site.profiles.provider %}
+                <li>
+                  <a href="{{ site.profiles[provider] }}" target="_blank" title="Folge uns auf {{ provider | capitalize }}">
+                    <i class="fa fa-2x fa-{{ provider }}{% if provider == 'google' %}-plus{% endif %}"></i> <span class="sr-only">Folge uns auf {{ provider | capitalize }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="container section-sm">
+        <span>&copy; {{ site.time | date: '%Y' }} Nasrin Schneider</span>
+        {% assign pages = (site.pages | where: 'published', 1 | where: 'menu', 'footer' | sort: 'order') %}
+        <ul class="list-stack">
+          {% for item in pages %}
+          {% unless item.parent %}
+          <li><a href="{{ item.url | remove: 'index.html' }}">{{ item.title }}</a></li>
+          {% endunless %}
+          {% endfor %}
+        </ul>
+
+        <span class="pull-right">Website by
+          <a onclick="document.getElementById('credit').click(); return false;" href="#">ABE Media</a>
+          <a href="http://abemedia.co.uk/" title="Web Design Brighton" target="_blank" id="credit" class="sr-only">Web Design Brighton</a>
+        </span>
+      </div>
+    </footer>
+    {% js app %}
+    {% for script in layout.scripts %}
+      {% assign external = script | slice: 0, 2 %}
+      {% if external == "//" or external == "ht" %}<script src='{{ script }}'></script>
+      {% else %}{% js 'apps/{{ script }}' %}{% endif %}
+    {% endfor %}
+    {% include system/analytics %}
+  </body>
+</html>

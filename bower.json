@@ -1,0 +1,9 @@
+{
+  "name": "nasrin",
+  "dependencies": {
+    "jquery": "1.*",
+    "bootstrap": "~3.3.7",
+    "fontawesome": "latest",
+    "owl.carousel": "2.*"
+  }
+}

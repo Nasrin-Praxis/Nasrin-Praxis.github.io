@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="general">
+                <field type="spacer" label="&lt;h3&gt;Banner&lt;/h3&gt;" />
+                <field name="banner_title" type="text" label="Titel" filter="string" class="form-control" />
+                <field name="banner_text" type="textarea" label="Beschreibung" filter="string" class="form-control" rows="3" />
+                <field name="banner_link" type="text" label="Link" filter="string" class="form-control" />
+        </fieldset>
+    </fields>
+</form>

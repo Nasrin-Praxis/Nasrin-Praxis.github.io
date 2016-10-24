@@ -1,0 +1,115 @@
+---
+layout: template
+banner: true
+---
+<div class="banner" style="{{ bg }}">
+  <div class="container">
+    <div class="row">
+      <div class="{% if page.align == 'right' %}col-sm-push-7{% endif %} col-sm-5 banner-text rel section">
+        <h1>{{ page.title }}</h1>
+        <p class="lead">{{ page.description | newline_to_br }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section container">
+  <div class="row">
+    <div class="col-sm-6">
+      {% include content.html %}<br><br>
+    </div>
+    <div class="col-sm-5 col-sm-push-1">
+      <form role="form" method="post" action="//send.abemedia.co.uk/lG" class="donforms well">
+        <h3 class="media-heading">Buchen Sie einen Termin</h3>
+        <p>Bitte füllen Sie dieses formular aus um einen Termin für <strong>{{ page.title }}</strong> zu buchen.</p>
+        <hr>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="first_name" class="control-label">Vorname *</label>
+            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Ihr Vorname" required>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="last_name" class="control-label">Nachname *</label>
+            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Ihr Nachname" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="email" class="control-label">Email Adresse *</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Ihre Email Adresse" required>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="phone" class="control-label">Telefonnummer *</label>
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Ihre Telefonnummer" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="date" class="control-label">Datum *</label>
+            <input type="date" name="date" id="date" value="" class="form-control" required>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="time" class="control-label">Tageszeit *</label>
+            <select name="time" id="time" class="form-control" required>
+              <option value="Egal">Egal</option>
+              <option value="Morgens">Morgens</option>
+              <option value="Mittags">Mittags</option>
+              <option value="Nachmittags">Nachmittags</option>
+              <option value="Abends">Abends</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message" class="control-label">Kurzbefund</label>
+          <textarea name="message" id=message rows="3" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <div class="checkbox small">
+            <label>
+              <input name="terms" value="true" type="checkbox" required> Ich bin damit einverstanden, dass meine eingegebenen Daten zur Kontaktaufnahme verwendet werden.
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-block btn-danger btn-lg text-uppercase">Anfrage Senden</button>
+        <input type="hidden" name="therapy" value="{{ page.title }}" />
+      </form>
+    </div>
+  </div>
+
+</div>
+
+{% assign testimonials = site.testimonials | where: 'therapy', page.slug | sort: 'order' %}
+
+{% for item in testimonials %}
+{% assign txt = item.quote | default: item.content | strip_html | strip %}
+{% if txt != '' %}{% assign show_testimonials = true %}{% endif %}
+{% endfor %}
+
+{% if show_testimonials %}
+<div class="bg-gray section">
+  <div class="container">
+    <h2 class="h1 section-header text-center">Was Patienten über {{ page.title }} sagen</h2>
+    <div class="section-content owl-carousel owl-theme" data-autoplay="true" data-items="3" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3}}' data-margin="30" data-loop="true" data-pause="false">
+      {% for item in testimonials %}
+      {% assign txt = item.quote | default: item.content | strip_html | strip %}
+      {% if txt != '' %}
+      <div>
+        <div class="bubble bubble-top lead">{{ txt }}</div>
+        {% assign img = item.image | remove_first: '_media/' %}
+        <div class="media">
+          {% if assets[img] %}
+          <div class="pull-left">{% img '{{ img }}' magick:resize:64^x64 magick:gravity:center magick:crop:64x64+0+0 image_optim:optimize:1 class:"img-circle img-thumbnail" alt:"{{ item.item }}" %}</div>
+          {% endif %}
+          <div class="media-body">
+            <strong class="h4">{{ item.title }}</strong> {% if item.birthday %} - {{ item.birthday | years }}J{% endif %}<br>
+            {% if item.position %}{{ item.position }}<br>{% endif %}
+            {% if item.location %}<i class="fa fa-map-marker"></i> {{ item.location }}{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}

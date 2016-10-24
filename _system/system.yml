@@ -1,0 +1,9 @@
+pages:
+    title: Pages
+    icon: sitemap
+therapien:
+    title: Therapien
+    icon: signing
+testimonials:
+    title: Testimonials
+    icon: users

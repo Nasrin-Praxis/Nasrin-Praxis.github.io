@@ -1,0 +1,4 @@
+<div class="cta bg-{{ include.params.bg }}{% unless include.params.bg %}warning{% endunless %}">
+  <span>{{ include.params.text | markdownify | strip_html }}&nbsp;</span>
+  <a class="btn btn-{{ include.params.btn }}{% unless include.params.btn %}primary{% endunless %} btn-lg" href="{{ site.baseurl }}{{ include.params.url | markdownify | strip_html }}">{{ include.params.action }}</a>
+</div>

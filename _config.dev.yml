@@ -1,0 +1,17 @@
+url: http://dev.abemedia.co.uk:4000
+assets:
+  compress:
+    css: false
+    js: false
+  sources:
+    - bower_components
+    - _assets/fonts
+    - _assets/css
+    - _assets/images
+    - _assets/js
+    - _media
+exclude:
+  - Gemfile*
+  - bower*
+  - README.md
+  - vendor

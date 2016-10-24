@@ -1,0 +1,82 @@
+---
+layout: template
+---
+<div class="section bg-primary">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-sm-4 col-sm-push-4">
+        <span class="fa-stack fa-lg fa-5x hidden-xs">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
+        </span>
+        <h3 class="sr-only">Anschrift</h3>
+        <address class="h3">
+          <strong>Therapeutenzentrum Rotherbaum</strong><br>
+          Alsterchaussee 3<br>
+          20149 Hamburg
+        </address>
+      </div>
+      <div class="col-sm-4 col-sm-pull-4">
+        <span class="fa-stack fa-lg fa-5x hidden-xs">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+        </span>
+        <h3>Telefon</h3>
+        <a class="fa-lg" href="tel:+4917696518194">0176 9651 8194</a>
+      </div>
+      <div class="col-sm-4">
+        <span class="fa-stack fa-lg fa-5x hidden-xs">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+        </span>
+        <h3>E-Mail Adresse</h3>
+        <a class="fa-lg" href="mailto:info@ganzheitlich-hamburg.de">info@ganzheitlich-hamburg.de</a>
+      </div>
+    </div>&nbsp;
+  </div>
+</div>
+
+{% include modules/anfahrt.html %}
+
+<div class="section">
+  <div class="container">
+    <h2 class="page-header">{{ page.heading }}</h2>
+    {{ content | replace_first: '<p>','<p class="lead">' }}
+    <form role="form" action="//send.abemedia.co.uk/0m" method="post" class="donforms">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="subject" class="control-label">Betreff *</label>
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="" required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="name" class="control-label">Name *</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="" required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="email" class="control-label">Email *</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="" required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="phone" class="control-label">Telefon</label>
+          <input type="tel" class="form-control" name="phone" id="phone" placeholder="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message" class="control-label">Nachricht *</label>
+        <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="checkbox" id="newsletter">
+            <label>
+              <input name="newsletter" value="true" type="checkbox"> Newsletter abonieren
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-6 text-right">
+          <button type="submit" class="btn btn-danger btn-lg">Schicken</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

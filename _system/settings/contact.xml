@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields label="Kontakt Daten">
+        <fieldset name="contact">
+            <field name="location" type="text" label="Lokation" filter="string" class="form-control" />
+            <field name="address" type="textarea" label="Adresse" filter="string" class="form-control" />
+            <field name="telephone" type="tel" label="Telefonnummer" filter="string" class="form-control" />
+            <field name="email" type="email" label="Email Adresse" filter="email" class="form-control" rows="5" />
+        </fieldset>
+    </fields>
+</form>

@@ -1,0 +1,69 @@
+title: 'Nasrin Schneider Physiotherapie Hamburg'
+url: 'https://faszien-hamburg.de'
+permalink: none
+locale: de_DE
+timezone: Europe/Berlin
+defaults:
+    -
+        scope:
+            path: ''
+            type: pages
+        values:
+            layout: page
+    -
+        scope:
+            path: ''
+            type: therapies
+        values:
+            layout: therapy
+collections:
+    therapies:
+        output: true
+        permalink: '/:path.html'
+    testimonials:
+        output: false
+mediaurl: _media
+assets:
+    compress:
+        css: false
+        js: true
+    digest: true
+    sources:
+        - bower_components
+        - _assets/fonts
+        - _assets/css
+        - _assets/images
+        - _assets/js
+        - _media
+baseurl: /
+exclude:
+    - 'Gemfile*'
+    - 'bower*'
+    - README.md
+    - vendor
+analytics:
+    provider: google_analytics
+    tracking_id: UA-86041858-1
+comments:
+    provider: '1'
+sharing:
+    limit: '3'
+profiles:
+    provider:
+        - facebook
+        - twitter
+        - google
+        - linkedin
+        - youtube
+        - xing
+    facebook: 'https://www.facebook.com/ganzheitlich.hamburg'
+    twitter: 'https://twitter.com/fasziennasrin'
+    google: 'https://plus.google.com/114914002637307311681'
+    linkedin: 'https://www.linkedin.com/in/nasrin-schneider-a8281886'
+    youtube: 'https://www.youtube.com/channel/UCYU7oXqXKnRmdEP-k68ebAw'
+    xing: 'https://www.xing.com/profile/Nasrin_Schneider'
+contact:
+    location: 'Therapeutenzentrum Rotherbaum'
+    address: "Alsterchaussee 3\r\n20149 Hamburg"
+    telephone: '0176 9651 8194'
+    email: info@faszien-hamburg.de

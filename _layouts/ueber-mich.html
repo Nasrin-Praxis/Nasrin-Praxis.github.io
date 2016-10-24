@@ -1,0 +1,13 @@
+---
+layout: default
+banner:
+    sm: 480x800
+    lg: 1366x350
+    xl: 1920x350
+---
+{% assign img = page.portrait | remove_first: '_media/' %}
+{% if assets[img] %}
+<img class="img-responsive img-circle pull-right" style="max-width:34%" src="{% include img_path src=img width=300 height=300 %}" alt="Nasrin Schneider" />
+{% endif %}
+
+{{ content }}

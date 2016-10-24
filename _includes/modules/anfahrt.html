@@ -1,0 +1,47 @@
+<div class="section text-center bg-img bg-fade" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyA803TAzZWMpes5AjakSDPRA_6pSEcxEMA&center=Therapeutenzentrum+Rotherbaum+Alsterchaussee+3+20149+Hamburg&zoom=13&scale=2&size=640x400&maptype=roadmap)">
+  <div class="container">
+    <h2 class="h1 section-header">Anfahrt</h2>
+    <form id="geolocate">
+      <label class="sr-only" for="adresse">Startadresse</label>
+      <div class="input-group input-group-lg">
+        <input type="text" id="adresse" class="form-control" placeholder="Geben Sie eine Startadresse ein um die Route zu berechnen" size="50" autocomplete="on" required>
+        <!--div class="input-group-btn">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default active">
+              <input type="radio" name="transport" id="driving" autocomplete="off" value="DRIVING" checked>
+              <i class="mapico mapico-driving fa-2x"></i>
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" name="transport" id="transit" autocomplete="off" value="TRANSIT">
+              <i class="mapico mapico-transit fa-2x"></i>
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" name="transport" id="walking" autocomplete="off" value="WALKING">
+              <i class="mapico mapico-walking fa-2x"></i>
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" name="transport" id="bicycle" autocomplete="off" value="BICYCLE">
+              <i class="mapico mapico-bicycle fa-2x"></i>
+            </label>
+          </div>
+        </div-->
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit">Los</button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  function initAutocomplete() {
+    var input = document.getElementById('adresse');
+    var autocomplete = new google.maps.places.Autocomplete((document.getElementById('adresse')),{types: ['geocode']});
+    var onChangeHandler = function() {
+      window.location.hash = encodeURIComponent(input.value).replace(/%20/g, "+");
+      window.location.pathname = '/anfahrt.html';
+    };
+    autocomplete.addListener('place_changed', onChangeHandler);
+    document.getElementById('geolocate').addEventListener('submit', onChangeHandler);
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA803TAzZWMpes5AjakSDPRA_6pSEcxEMA&amp;libraries=places&amp;region=de&amp;callback=initAutocomplete" async="" defer=""></script>

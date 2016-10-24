@@ -1,0 +1,35 @@
+---
+layout: template
+banner:
+    sm: 480x800
+    lg: 1366x350
+    xl: 1920x350
+---
+{% assign img_path = page.image | remove_first: '_media/' %}
+{% if assets[img_path] %}
+<div class="bg-dark text-center bg-fade banner">
+  <div class="container banner-caption">
+    <h1>{{ page.heading | default: page.title | markdownify | strip_html }}</h1>
+  </div>
+</div>
+{% endif %}
+{% capture class %}{{ page.class }}{{ layout.class }}{% endcapture %}
+<div class="{{ class | strip | default: 'container section' }}" id="content">
+  {% if page.left or page.right %}
+  <div class="row">
+    {% if page.left %}
+    <aside class="col-md-{{ page.left.size }}" role="complementary">
+      {% include modules.html module=page.left %}
+    </aside>
+    {% endif %}
+    <div class="col-md-{{ 12 | minus: page.left.size | minus: page.right.size }}" role="main">
+      {{ content }}
+    </div>
+    {% if page.right %}
+    <aside class="col-md-{{ page.right.size }}" role="complementary">
+      {% include modules.html module=page.right %}
+    </aside>
+    {% endif %}
+  </div>
+  {% else %}{{ content }}{% endif %}
+</div>

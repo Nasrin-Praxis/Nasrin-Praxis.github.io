@@ -1,0 +1,27 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  font-weight: 500;
+  min-height: 350px;
+  h1,
+  .h1 {
+    font-size: round(2.5 * @font-size-base);
+    font-weight: 700;
+  }
+  .lead {
+    font-weight: 500;
+  }
+  .banner-text {
+    color: @gray-dark;
+    background-color: rgba(255,255,255,.75);
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .banner-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: perspective(1px) translate(-50%, -50%);
+  }
+}

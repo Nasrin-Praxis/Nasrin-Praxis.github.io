@@ -1,0 +1,70 @@
+//
+// Jumbotron
+// --------------------------------------------------
+
+.jumbotron {
+  padding-top:    @jumbotron-padding;
+  padding-bottom: @jumbotron-padding;
+  //margin-bottom: @jumbotron-padding;
+  //color: @jumbotron-color;
+  //background-color: @jumbotron-bg;
+
+  h1,
+  .h1 {
+    //color: @jumbotron-heading-color;
+  }
+
+  p {
+    margin-bottom: (@jumbotron-padding / 2);
+    font-size: @jumbotron-font-size;
+    //font-weight: 200;
+  }
+
+  > hr {
+    border-top-color: darken(@jumbotron-bg, 10%);
+  }
+/*
+  .container &,
+  .container-fluid & {
+    border-radius: @border-radius-large; // Only round corners at higher resolutions if contained in a container
+  }
+
+  .container {
+    max-width: 100%;
+  }
+*/
+  @media screen and (min-width: @screen-md-min) {
+    padding-top:    (@jumbotron-padding * 1.6);
+    padding-bottom: (@jumbotron-padding * 1.6);
+
+    .container &,
+    .container-fluid & {
+      padding-left:  (@jumbotron-padding * 2);
+      padding-right: (@jumbotron-padding * 2);
+    }
+
+    h1,
+    .h1 {
+      font-size: @jumbotron-heading-font-size;
+    }
+  }
+
+
+  /* additions */
+  .bg-fade();
+  &.jumbotron-sm {
+    padding-top:    round(@jumbotron-padding * .75);
+    padding-bottom: round(@jumbotron-padding * .75);
+  }
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  h1, h2, h3, h4, h5, h6, p, .btn-link {
+    text-shadow: 0 0 5px #000;
+    font-weight: 700;
+  }
+  .btn-link {
+    color: #fff;
+  }
+
+}

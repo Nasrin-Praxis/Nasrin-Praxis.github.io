@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="advanced">
+            <field name="heading" label="Überschrift" type="text" class="form-control" filter="string" />
+            <field name="menu" type="list" label="Menü" class="form-control" admintable="true">
+                <option value=""></option>
+                <option value="main">Hauptmenü</option>
+                <option value="footer">Fußmenü</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>
