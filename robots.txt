@@ -1,6 +1,6 @@
 ---
 ---
 User-agent: *
-Disallow: /
+Disallow: /impressum.html
 
 Sitemap: {{site.url}}/sitemap.xml

@@ -1,9 +1,12 @@
 pages:
     title: Pages
     icon: sitemap
-therapien:
+therapies:
     title: Therapien
     icon: signing
 testimonials:
     title: Testimonials
     icon: users
+posts:
+    title: Blog
+    icon: file-text-o

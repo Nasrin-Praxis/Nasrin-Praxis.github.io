@@ -16,6 +16,12 @@ defaults:
             type: therapies
         values:
             layout: therapy
+    -
+        scope:
+            path: ''
+            type: posts
+        values:
+            layout: blog_post
 collections:
     therapies:
         output: true
@@ -48,6 +54,12 @@ comments:
     provider: '1'
 sharing:
     limit: '3'
+    provider:
+        - facebook
+        - twitter
+        - google
+        - linkedin
+        - xing
 profiles:
     provider:
         - facebook
