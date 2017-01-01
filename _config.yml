@@ -59,7 +59,6 @@ sharing:
         - twitter
         - google
         - linkedin
-        - xing
 profiles:
     provider:
         - facebook
@@ -72,7 +71,7 @@ profiles:
     twitter: 'https://twitter.com/fasziennasrin'
     google: 'https://plus.google.com/114914002637307311681'
     linkedin: 'https://www.linkedin.com/in/nasrin-schneider-a8281886'
-    youtube: 'https://www.youtube.com/channel/UCYU7oXqXKnRmdEP-k68ebAw'
+    youtube: 'https://www.youtube.com/channel/UCMpC3Fi-nCYj7hqL0ckDigQ'
     xing: 'https://www.xing.com/profile/Nasrin_Schneider'
 contact:
     location: 'Therapeutenzentrum Rotherbaum'
