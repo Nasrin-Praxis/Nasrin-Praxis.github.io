@@ -58,7 +58,7 @@ sharing:
         - facebook
         - twitter
         - google
-        - linkedin
+        - pinterest
 profiles:
     provider:
         - facebook
