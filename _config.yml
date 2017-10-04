@@ -51,7 +51,9 @@ analytics:
     provider: google_analytics
     tracking_id: UA-86041858-1
 comments:
-    provider: '1'
+    provider: facebook_comments
+    num_posts: 0
+    width: 0
 sharing:
     limit: '3'
     provider:
