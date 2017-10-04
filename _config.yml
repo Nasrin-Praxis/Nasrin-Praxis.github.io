@@ -67,6 +67,7 @@ profiles:
         - linkedin
         - youtube
         - instagram
+        - pinterest
         - xing
     facebook: 'https://www.facebook.com/FaszienNasrin'
     twitter: 'https://twitter.com/fasziennasrin'
@@ -75,6 +76,7 @@ profiles:
     youtube: 'https://www.youtube.com/channel/UCMpC3Fi-nCYj7hqL0ckDigQ'
     xing: 'https://www.xing.com/profile/Nasrin_Schneider'
     instagram: 'https://www.instagram.com/faszien_hamburg/?hl=de'
+    pinterest: 'https://www.pinterest.de/FaszienNasrin/'
 contact:
     location: 'Therapeutenzentrum Rotherbaum'
     address: "Alsterchaussee 3\r\n20149 Hamburg"
