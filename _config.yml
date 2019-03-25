@@ -4,21 +4,24 @@ permalink: none
 locale: de_DE
 timezone: Europe/Berlin
 defaults:
-    - scope:
-          path: ''
-          type: pages
-      values:
-          layout: page
-    - scope:
-          path: ''
-          type: therapies
-      values:
-          layout: therapy
-    - scope:
-          path: ''
-          type: posts
-      values:
-          layout: blog_post
+    -
+        scope:
+            path: ''
+            type: pages
+        values:
+            layout: page
+    -
+        scope:
+            path: ''
+            type: therapies
+        values:
+            layout: therapy
+    -
+        scope:
+            path: ''
+            type: posts
+        values:
+            layout: blog_post
 collections:
     therapies:
         output: true
@@ -61,13 +64,8 @@ sharing:
 profiles:
     provider:
         - facebook
-        - twitter
-        - google
-        - linkedin
         - youtube
         - instagram
-        - pinterest
-        - xing
     facebook: 'https://www.facebook.com/FaszienNasrin'
     twitter: 'https://twitter.com/fasziennasrin'
     google: 'https://plus.google.com/114914002637307311681'
