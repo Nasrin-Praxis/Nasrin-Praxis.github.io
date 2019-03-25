@@ -1,33 +1,33 @@
 language: ruby
 rvm:
-- 2.2
+  - 2.5
 
 cache:
-- directories:
-  - .asset-cache
-  - bower_components
-  - vendor
+  - directories:
+      - .asset-cache
+      - bower_components
+      - vendor
 
 before_install:
-- nvm install 4
-- npm install -g bower svgo
-- bower install
-- if [ ! -f "$PNGOUT_BIN" ]; then wget -q http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz && tar -xzf pngout-20150319-linux.tar.gz && mv pngout-20150319-linux/x86_64 vendor/pngout; fi
-- if [[ $(git show --name-only) == *_assets/less* ]]; then rm -rf .asset-cache/sprockets; fi
+  - nvm install 4
+  - npm install -g bower svgo
+  - bower install
+  - if [ ! -f "$PNGOUT_BIN" ]; then wget -q http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz && tar -xzf pngout-20150319-linux.tar.gz && mv pngout-20150319-linux/x86_64 vendor/pngout; fi
+  - if [[ $(git show --name-only) == *_assets/less* ]]; then rm -rf .asset-cache/sprockets; fi
 
 script:
-- set -e
-- bundle exec jekyll build --verbose --trace
-- set +e
-- #bundle exec htmlproofer ./_site --allow-hash-href --check-html --http-status-ignore 0
-- cd _site
-- touch .nojekyll
-- git init
-- git config user.name "Travis-CI"
-- git config user.email "travis@example.com"
-- git add .
-- git commit -m "Deployed to Github Pages"
-- git push --force --quiet "https://${GH_TOKEN}@github.com/nasrinpraxis/nasrinpraxis.github.io" master > /dev/null 2>&1
+  - set -e
+  - bundle exec jekyll build --verbose --trace
+  - set +e
+  # - bundle exec htmlproofer ./_site --allow-hash-href --check-html --http-status-ignore 0
+  - cd _site
+  - touch .nojekyll
+  - git init
+  - git config user.name "Travis-CI"
+  - git config user.email "travis@example.com"
+  - git add .
+  - git commit -m "Deployed to Github Pages"
+  - git push --force --quiet "https://${GH_TOKEN}@github.com/nasrinpraxis/nasrinpraxis.github.io" master > /dev/null 2>&1
 
 git:
   depth: 10
@@ -37,5 +37,5 @@ notifications:
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-  - PNGOUT_BIN=vendor/pngout/pngout
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+    - PNGOUT_BIN=vendor/pngout/pngout
