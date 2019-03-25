@@ -64,13 +64,8 @@ sharing:
 profiles:
     provider:
         - facebook
-        - twitter
-        - google
-        - linkedin
         - youtube
         - instagram
-        - pinterest
-        - xing
     facebook: 'https://www.facebook.com/FaszienNasrin'
     twitter: 'https://twitter.com/fasziennasrin'
     google: 'https://plus.google.com/114914002637307311681'
