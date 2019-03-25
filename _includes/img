@@ -1,4 +1,4 @@
 {% capture gravity %}{% if include.gravity %}{{ include.gravity }}{% else %}center{% endif %}{% endcapture %}
 {% if include.src %}
-{% img '{{ include.src | remove_first: "_media/" }}' magick:resize:'{{ include.width }}^x{{ include.height }}' magick:gravity:'{{ gravity }}' magick:crop:'{{ include.width }}x{{ include.height }}+0+0' alt:'{{ include.title }}' class:'{{ include.class }}' %}
+{% asset '{{ include.src | remove_first: "_media/" }}' magick:resize:'{{ include.width }}^x{{ include.height }}' magick:gravity:'{{ gravity }}' magick:crop:'{{ include.width }}x{{ include.height }}+0+0' alt:'{{ include.title }}' class:'{{ include.class }}' %}
 {% endif %}
