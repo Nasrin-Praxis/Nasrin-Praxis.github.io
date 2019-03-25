@@ -102,11 +102,11 @@
         </span>
       </div>
     </footer>
-    {% js app %}
+    {% asset app.js %}
     {% for script in layout.scripts %}
       {% assign external = script | slice: 0, 2 %}
       {% if external == "//" or external == "ht" %}<script src='{{ script }}'></script>
-      {% else %}{% js 'apps/{{ script }}' %}{% endif %}
+      {% else %}{% asset 'apps/{{ script }}' %}{% endif %}
     {% endfor %}
     {% widget {{site.analytics.provider}} params=site.analytics %}
   </body>

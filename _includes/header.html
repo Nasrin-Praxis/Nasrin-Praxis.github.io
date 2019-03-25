@@ -44,12 +44,12 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    {% css app %}
+    {% asset app.css %}
     {% for stylesheet in page.stylesheets %}
       {% assign external = stylesheet | slice: 0, 2 %}
       {% if external == "//" or external == "ht" %}
         <link rel='stylesheet' href='{{ stylesheet }}' />
-      {% else %}{% css '{{ stylesheet }}' %}{% endif %}
+      {% else %}{% asset '{{ stylesheet }}' %}{% endif %}
     {% endfor %}
     <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:light,regular,bold' />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="/feed.xml">
