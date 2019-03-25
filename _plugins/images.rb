@@ -4,7 +4,7 @@ require 'base64'
 module Jekyll
 
   # Inline image (base64)
-  class ImageBase64 < Jekyll::Assets::Liquid::Tag
+  class ImageBase64 < Jekyll::Assets::Tag
     def initialize(tag, args, tokens)
       super("img", args, tokens)
     end
@@ -19,7 +19,7 @@ module Jekyll
   end
 
   # For using proxies on images where only the path is required
-  class ImagePath < Jekyll::Assets::Liquid::Tag
+  class ImagePath < Jekyll::Assets::Tag
     def initialize(tag, args, tokens)
       super("img", args, tokens)
     end
@@ -31,7 +31,7 @@ module Jekyll
 
   end
 
-  class ImageAbsolute < Jekyll::Assets::Liquid::Tag
+  class ImageAbsolute < Jekyll::Assets::Tag
     def initialize(tag, args, tokens)
       super("img", args, tokens)
     end
