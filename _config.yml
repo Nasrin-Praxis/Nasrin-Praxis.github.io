@@ -4,24 +4,21 @@ permalink: none
 locale: de_DE
 timezone: Europe/Berlin
 defaults:
-    -
-        scope:
-            path: ''
-            type: pages
-        values:
-            layout: page
-    -
-        scope:
-            path: ''
-            type: therapies
-        values:
-            layout: therapy
-    -
-        scope:
-            path: ''
-            type: posts
-        values:
-            layout: blog_post
+    - scope:
+          path: ''
+          type: pages
+      values:
+          layout: page
+    - scope:
+          path: ''
+          type: therapies
+      values:
+          layout: therapy
+    - scope:
+          path: ''
+          type: posts
+      values:
+          layout: blog_post
 collections:
     therapies:
         output: true
