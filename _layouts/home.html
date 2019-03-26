@@ -28,7 +28,7 @@ banner: true
       {% for item in items %} 
       {% assign img = item.image | remove_first: '_media/' %} 
       {% if assets[img] %} 
-      {% capture img_path %}{% img_path '{{ img }}' magick:resize:400^x300 magick:gravity:center magick:crop:400x300+0+0 image_optim:optimize:1 %}{% endcapture %} 
+      {% capture img_path %}{% img_path '{{ img }}' magick:resize=400^x300 magick:gravity=center magick:crop=400x300+0+0 image_optim:optimize:1 %}{% endcapture %} 
       {% else %} 
       {% assign img_path = '' %} 
       {% endif %}
@@ -70,7 +70,7 @@ banner: true
         <div class="media">
           {% if assets[img] %}
           <div class="pull-left">
-            {% asset '{{ img }}' magick:resize:64^x64 magick:gravity:center magick:crop:64x64+0+0 image_optim:optimize:1 class:"img-circle img-thumbnail" alt:"{{ item.item }}" %}
+            {% asset '{{ img }}' magick:resize=64^x64 magick:gravity=center magick:crop=64x64+0+0 image_optim:optimize:1 class:"img-circle img-thumbnail" alt:"{{ item.item }}" %}
           </div>
           {% endif %}
           <div class="media-body">

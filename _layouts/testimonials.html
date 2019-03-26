@@ -14,7 +14,7 @@ class: bg-gray section
       {{ item.content }}
     </div>
     {% assign img = item.image | remove_first: '_media/' %}
-    {% capture img %}{% if assets[img] %}{% asset '{{ img }}' magick:resize:90^x90 magick:gravity:center magick:crop:90x90+0+0 image_optim:optimize:1 class:"img-circle" alt:"{{ item.item }}" %}{% endif %}{% endcapture %}
+    {% capture img %}{% if assets[img] %}{% asset '{{ img }}' magick:resize=90^x90 magick:gravity=center magick:crop=90x90+0+0 image_optim:optimize:1 class:"img-circle" alt:"{{ item.item }}" %}{% endif %}{% endcapture %}
     {% capture body %}
     <h4>{{ item.title }} {% if item.birthday %} <small>- {{ item.birthday | years }}J</small>{% endif %}</h4>
     {% if item.position %}{{ item.position }}<br>{% endif %}
